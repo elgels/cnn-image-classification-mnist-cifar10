@@ -184,13 +184,7 @@ To interpret the confusion matrix, the CIFAR-10 class labels are encoded as:
 
 <h3>Model Architecture</h3>
 <p align="center">
-  <img src="figures/model_architecture.png" alt="CNN model architecture" width="650">
-</p>
-
-<!-- Optional section: remove if you don't include this image -->
-<h3>Sample Predictions</h3>
-<p align="center">
-  <img src="figures/sample_predictions.png" alt="Sample predictions" width="650">
+  <img src="figures/model_architecture.png" alt="CNN model architecture" width="700">
 </p>
 
 <hr>
@@ -222,7 +216,6 @@ Python • PyTorch • NumPy • Matplotlib • Seaborn • Jupyter Notebook
 ├── figures/
 │   ├── confusion_matrix.png
 │   ├── model_architecture.png
-│   └── sample_predictions.png
 └── README.md
 </pre>
 
