@@ -164,7 +164,7 @@ To interpret the confusion matrix, the CIFAR-10 class labels are encoded as:
   <tr>
     <td>Accuracy</td>
     <td>~99%</td>
-    <td>~70–80%</td>
+    <td>~86%</td>
   </tr>
   <tr>
     <td>Main Challenge</td>
