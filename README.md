@@ -124,12 +124,11 @@ Python • PyTorch • NumPy • Matplotlib • Seaborn • Jupyter Notebook
 <h2>Repository Structure</h2>
 
 <pre>
-├── mnist_cnn_mnist.ipynb
+├── mnist_cnn.ipynb
 ├── cifar10_cnn.ipynb
 ├── figures/
 │   ├── confusion_matrix.png
 │   ├── model_architecture.png
-│   └── sample_predictions.png
 └── README.md
 </pre>
 
