@@ -126,7 +126,7 @@ The model uses <strong>ReLU activations</strong>, <strong>batch normalization</s
 
 <h3>CIFAR-10</h3>
 <ul>
-  <li>Achieved strong performance (~86% test accuracy) using a custom CNN architecture.</li>
+  <li>Achieved strong performance (~86% test accuracy) using a custom CNN architecture</li>
   <li>Increased difficulty due to low resolution and class similarity</li>
   <li>Greater variability in predictions across classes</li>
 </ul>
