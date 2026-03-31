@@ -179,7 +179,7 @@ To interpret the confusion matrix, the CIFAR-10 class labels are encoded as:
 
 <h3>Confusion Matrix</h3>
 <p align="center">
-  <img src="figures/confusion_matrix.png" alt="CIFAR-10 confusion matrix" width="550">
+  <img src="figures/confusion_matrix.png" alt="CIFAR-10 confusion matrix" width="500">
 </p>
 
 <h3>Model Architecture</h3>
