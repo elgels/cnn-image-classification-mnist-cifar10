@@ -136,7 +136,7 @@ Python • PyTorch • NumPy • Matplotlib • Seaborn • Jupyter Notebook
 
 <h3>Confusion Matrix</h3>
 <p align="center">
-  <img src="figures/confusion_matrix.png" alt="CIFAR-10 confusion matrix" width="650">
+  <img src="figures/confusion_matrix.png" alt="CIFAR-10 confusion matrix" width="550">
 </p>
 
 <h3>Model Architecture</h3>
