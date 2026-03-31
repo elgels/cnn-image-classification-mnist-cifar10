@@ -6,8 +6,10 @@ This project applies <strong>Convolutional Neural Networks (CNNs)</strong> to im
 </p>
 
 <p>
-The goal is to show how model performance and classification challenges evolve when moving from a simple dataset such as MNIST to a more complex dataset such as CIFAR-10, and to evaluate results through accuracy metrics, a confusion matrix, and error analysis.
+The objective is to demonstrate how model performance evolves from a simple dataset (MNIST) to a more complex dataset (CIFAR-10), and to analyze model behavior through evaluation metrics, confusion matrices, and error analysis.
 </p>
+
+<hr>
 
 <h2>Datasets</h2>
 
@@ -22,61 +24,129 @@ The goal is to show how model performance and classification challenges evolve w
 <ul>
   <li>Color images across 10 classes: airplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck</li>
   <li>Image size: 32 × 32</li>
-  <li>Higher-complexity dataset with overlapping visual features across classes</li>
+  <li>Higher complexity with overlapping visual features across classes</li>
 </ul>
 
-<h2>Model Architecture</h2>
+<hr>
+
+<h2>CNN Model Architecture</h2>
+
 <p>
-The project uses a <strong>Convolutional Neural Network (CNN)</strong> for image classification. The architecture includes:
+The final CIFAR-10 model is a <strong>deep Convolutional Neural Network (CNN)</strong> designed to classify 32 × 32 RGB images into 10 categories.
 </p>
 
 <ul>
-  <li>Convolutional layers for feature extraction</li>
-  <li>Activation functions such as ReLU</li>
-  <li>Pooling layers for dimensionality reduction</li>
-  <li>Fully connected layers for final classification</li>
+  <li><strong>Input:</strong> 3 × 32 × 32 RGB images</li>
+
+  <li><strong>Convolutional Block 1:</strong>
+    <ul>
+      <li>64 filters, 3 × 3 kernel, padding = 1</li>
+      <li>Batch Normalization + ReLU</li>
+      <li>Max Pooling (2 × 2)</li>
+    </ul>
+  </li>
+
+  <li><strong>Convolutional Block 2:</strong>
+    <ul>
+      <li>128 filters, 3 × 3 kernel, padding = 1</li>
+      <li>Batch Normalization + ReLU</li>
+      <li>Max Pooling (2 × 2)</li>
+      <li>Dropout (p = 0.1)</li>
+    </ul>
+  </li>
+
+  <li><strong>Convolutional Block 3:</strong>
+    <ul>
+      <li>256 filters, 3 × 3 kernel, padding = 1</li>
+      <li>Batch Normalization + ReLU</li>
+      <li>Max Pooling (2 × 2)</li>
+    </ul>
+  </li>
+
+  <li><strong>Convolutional Block 4:</strong>
+    <ul>
+      <li>512 filters, 3 × 3 kernel, padding = 1</li>
+      <li>Batch Normalization + ReLU</li>
+      <li>Max Pooling (2 × 2)</li>
+      <li>Dropout (p = 0.1)</li>
+    </ul>
+  </li>
+
+  <li><strong>Fully Connected Layer:</strong>
+    <ul>
+      <li>2048 input features → 512 neurons</li>
+      <li>Batch Normalization + ReLU</li>
+      <li>Dropout (p = 0.3)</li>
+    </ul>
+  </li>
+
+  <li><strong>Output Layer:</strong> 10 neurons (one per class)</li>
 </ul>
 
 <p>
-This architecture enables the model to learn hierarchical image features, from simple edges and shapes to more complex visual patterns.
+The model uses <strong>ReLU activations</strong>, <strong>batch normalization</strong> to stabilize training, <strong>max pooling</strong> to reduce spatial dimensions while preserving key features, and <strong>dropout</strong> to help reduce overfitting.
 </p>
+
+<hr>
+
+<h2>Hyperparameters and Optimization</h2>
+
+<ul>
+  <li><strong>Learning rate:</strong> 0.001</li>
+  <li><strong>Batch size:</strong> 64</li>
+  <li><strong>Epochs:</strong> 30</li>
+  <li><strong>Optimizer:</strong> Adam</li>
+  <li><strong>Weight decay:</strong> 1e-4</li>
+  <li><strong>Learning rate scheduler:</strong> StepLR</li>
+  <li><strong>Data augmentation:</strong> random horizontal flipping, random cropping, and normalization</li>
+</ul>
+
+<hr>
 
 <h2>Methods</h2>
+
 <ul>
   <li>Data preprocessing and normalization</li>
-  <li>CNN model training and validation</li>
+  <li>Model training and validation</li>
   <li>Performance evaluation using accuracy</li>
   <li>Confusion matrix analysis for class-level performance</li>
-  <li>Error analysis to identify common misclassifications</li>
+  <li>Error analysis to understand misclassifications</li>
 </ul>
+
+<hr>
 
 <h2>Results</h2>
 
 <h3>MNIST</h3>
 <ul>
-  <li>High classification accuracy</li>
-  <li>Minimal misclassification across classes</li>
-  <li>Serves as a baseline for comparison</li>
+  <li>High classification accuracy (~99%)</li>
+  <li>Minimal misclassification</li>
+  <li>Serves as a baseline model</li>
 </ul>
 
 <h3>CIFAR-10</h3>
 <ul>
-  <li>Lower accuracy than MNIST due to higher dataset complexity</li>
-  <li>Greater difficulty distinguishing visually similar classes</li>
-  <li>Performance affected by low image resolution and class overlap</li>
+  <li>Moderate accuracy (~70–80%)</li>
+  <li>Increased difficulty due to low resolution and class similarity</li>
+  <li>Greater variability in predictions across classes</li>
 </ul>
 
+<hr>
+
 <h2>Confusion Matrix Insights</h2>
+
 <p>
 To interpret the confusion matrix, the CIFAR-10 class labels are encoded as:
 0 (airplane), 1 (automobile), 2 (bird), 3 (cat), 4 (deer), 5 (dog), 6 (frog), 7 (horse), 8 (ship), and 9 (truck).
 </p>
 
 <ul>
-  <li>The strongest misclassification occurs between <strong>cats and dogs</strong>, which is reasonable given their similar visual features.</li>
-  <li>The model also struggles with the <strong>bird</strong> class, confusing it with classes such as airplane and deer.</li>
-  <li>These results suggest that low-resolution images make it harder for the CNN to capture subtle textures and shapes.</li>
+  <li>The most significant misclassification occurs between <strong>cats and dogs</strong>, reflecting their similar visual features.</li>
+  <li>The model struggles with the <strong>bird</strong> class, often confusing it with airplane and deer.</li>
+  <li>These errors suggest difficulty capturing subtle textures and shapes in low-resolution images.</li>
 </ul>
+
+<hr>
 
 <h2>MNIST vs CIFAR-10 Comparison</h2>
 
@@ -92,14 +162,9 @@ To interpret the confusion matrix, the CIFAR-10 class labels are encoded as:
     <td>High</td>
   </tr>
   <tr>
-    <td>Image Type</td>
-    <td>Grayscale digits</td>
-    <td>Color object images</td>
-  </tr>
-  <tr>
-    <td>Difficulty</td>
-    <td>Relatively easy</td>
-    <td>More challenging</td>
+    <td>Accuracy</td>
+    <td>~99%</td>
+    <td>~70–80%</td>
   </tr>
   <tr>
     <td>Main Challenge</td>
@@ -108,29 +173,7 @@ To interpret the confusion matrix, the CIFAR-10 class labels are encoded as:
   </tr>
 </table>
 
-<h2>Future Improvements</h2>
-<ul>
-  <li>Refine data augmentation settings to avoid removing important visual features</li>
-  <li>Experiment with deeper CNN architectures</li>
-  <li>Apply transfer learning with pretrained models</li>
-  <li>Explore transformer-based image classification models</li>
-</ul>
-
-<h2>Technologies Used</h2>
-<p>
-Python • PyTorch • NumPy • Matplotlib • Seaborn • Jupyter Notebook
-</p>
-
-<h2>Repository Structure</h2>
-
-<pre>
-├── mnist_cnn.ipynb
-├── cifar10_cnn.ipynb
-├── figures/
-│   ├── confusion_matrix.png
-│   ├── model_architecture.png
-└── README.md
-</pre>
+<hr>
 
 <h2>Project Visuals</h2>
 
@@ -144,15 +187,60 @@ Python • PyTorch • NumPy • Matplotlib • Seaborn • Jupyter Notebook
   <img src="figures/model_architecture.png" alt="CNN model architecture" width="650">
 </p>
 
-<h2>Key Takeaways</h2>
+<!-- Optional section: remove if you don't include this image -->
+<h3>Sample Predictions</h3>
+<p align="center">
+  <img src="figures/sample_predictions.png" alt="Sample predictions" width="650">
+</p>
+
+<hr>
+
+<h2>Future Improvements</h2>
+
 <ul>
-  <li>CNNs perform extremely well on simple image classification tasks such as MNIST.</li>
-  <li>Performance drops on more complex datasets such as CIFAR-10, where classes overlap visually.</li>
-  <li>Confusion matrix analysis helps explain model weaknesses beyond overall accuracy.</li>
-  <li>Dataset complexity plays a major role in classification performance.</li>
+  <li>Refine data augmentation to preserve important visual features</li>
+  <li>Experiment with deeper CNN architectures</li>
+  <li>Apply transfer learning with pretrained models</li>
+  <li>Explore transformer-based models for improved performance</li>
 </ul>
 
+<hr>
+
+<h2>Technologies Used</h2>
+
+<p>
+Python • PyTorch • NumPy • Matplotlib • Seaborn • Jupyter Notebook
+</p>
+
+<hr>
+
+<h2>Repository Structure</h2>
+
+<pre>
+├── mnist_cnn.ipynb
+├── cifar10_cnn.ipynb
+├── figures/
+│   ├── confusion_matrix.png
+│   ├── model_architecture.png
+│   └── sample_predictions.png
+└── README.md
+</pre>
+
+<hr>
+
+<h2>Key Takeaways</h2>
+
+<ul>
+  <li>CNNs perform extremely well on simple datasets such as MNIST.</li>
+  <li>Performance decreases as dataset complexity increases.</li>
+  <li>Confusion matrix analysis provides deeper insight beyond accuracy.</li>
+  <li>Dataset complexity significantly impacts model performance.</li>
+</ul>
+
+<hr>
+
 <h2>License</h2>
+
 <p>
 This project is licensed under the MIT License.
 </p>
