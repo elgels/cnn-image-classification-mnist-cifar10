@@ -36,7 +36,7 @@ The final CIFAR-10 model is a <strong>deep Convolutional Neural Network (CNN)</s
 </p>
 
 <ul>
-  <li><strong>Input:</strong> 3 × 32 × 32 RGB images</li>
+  <li><strong>Input:</strong> 3 × 32 × 32 RGB image</li>
 
   <li><strong>Convolutional Block 1:</strong>
     <ul>
@@ -211,12 +211,13 @@ Python • PyTorch • NumPy • Matplotlib • Seaborn • Jupyter Notebook
 <h2>Repository Structure</h2>
 
 <pre>
-├── mnist_cnn.ipynb
-├── cifar10_cnn.ipynb
+
 ├── figures/
 │   ├── confusion_matrix.png
 │   ├── model_architecture.png
-└── README.md
+├── README.md
+├── mnist_cnn.ipynb
+└── cifar10_cnn.ipynb
 </pre>
 
 <hr>
